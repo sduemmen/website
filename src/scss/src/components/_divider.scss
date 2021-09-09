@@ -1,0 +1,83 @@
+@import '../utilities/colors';
+@import '../utilities/fonts';
+
+*::before, *::after {
+    position: absolute;
+    font-family: $--ff-Caveat;
+    color: $--clr-tags-comment; 
+    font-size: 1.2rem;
+    @media screen and (max-width: 1300px){
+        font-size: 1.1rem;
+    }
+    @media screen and (max-width: 700px){
+        font-size: 1rem;
+    }
+    @media screen and (max-width: 480px){
+        font-size: 0.9rem;
+    }
+}
+
+section:not(.section-home){
+    &::before, &::after {
+        left: 15px;
+        @media screen and (max-width: 700px){
+            left: 10px;
+        }
+        @media screen and (max-width: 480px){
+            left: 5px;
+        }
+    }
+    &::before {
+        content: '<section>';
+        top: 0;
+    }
+    &::after {
+        content: '</section>';
+        bottom: 0;
+    }
+}
+
+h1 {
+    &::before, &::after {
+        left: -15px;
+        font-weight: normal;
+    }
+    &::before {
+        content: '<h1>';
+        top: -4px;
+    }
+    &::after {
+        content: '</h1>';
+        bottom: 0;
+    }
+}
+
+h2 {
+    &::before, &::after {
+        left: -15px;
+        font-weight: normal;
+    }
+    &::before {
+        content: '<h2>';
+        top: -14px;
+    }
+    &::after {
+        content: '</h2>';
+        bottom: -10px;
+    }
+}
+
+p {
+    &::before, &::after {
+        left: -15px;
+        font-weight: normal;
+    }
+    &.before::before {
+        content: '<p>';
+        top: -25px;
+    }
+    &.after::after {
+        content: '</p>';
+        bottom: -25px;
+    }
+}
