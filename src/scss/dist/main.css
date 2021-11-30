@@ -516,6 +516,12 @@ p.after::after {
   opacity: 0;
 }
 
+.project__container:hover .project__description {
+  -webkit-transition-delay: 0ms;
+          transition-delay: 0ms;
+  opacity: 0;
+}
+
 .project__container:hover .project__link {
   -webkit-transition: color 350ms, opacity 150ms cubic-bezier(0.75, 0.24, 0.84, 0.43) 200ms;
   transition: color 350ms, opacity 150ms cubic-bezier(0.75, 0.24, 0.84, 0.43) 200ms;
@@ -530,9 +536,14 @@ p.after::after {
   .project__container:hover .project__name {
     opacity: 1;
   }
+  .project__container:hover .project__description {
+    opacity: 1;
+  }
 }
 
 .project__name {
+  position: absolute;
+  top: 10%;
   font-size: 1.8rem;
   font-family: "Exo 2", sans-serif;
   font-weight: normal;
@@ -542,10 +553,14 @@ p.after::after {
   transition: opacity 150ms cubic-bezier(0.75, 0.24, 0.84, 0.43) 200ms;
 }
 
+@media screen and (max-width: 1300px) {
+  .project__name {
+    font-size: 1.6rem;
+  }
+}
+
 @media screen and (max-width: 1000px) {
   .project__name {
-    position: absolute;
-    top: 20px;
     font-size: 1.5rem;
   }
 }
@@ -553,6 +568,30 @@ p.after::after {
 @media screen and (max-width: 800px) {
   .project__name {
     font-size: 1.3rem;
+  }
+}
+
+.project__description {
+  position: absolute;
+  top: 65%;
+  font-size: 1.2rem;
+  font-family: "Exo 2", sans-serif;
+  font-weight: normal;
+  color: #f0f0e5;
+  opacity: 1;
+  -webkit-transition: opacity 150ms cubic-bezier(0.75, 0.24, 0.84, 0.43) 200ms;
+  transition: opacity 150ms cubic-bezier(0.75, 0.24, 0.84, 0.43) 200ms;
+}
+
+@media screen and (max-width: 1300px) {
+  .project__description {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .project__description {
+    font-size: 0.9rem;
   }
 }
 

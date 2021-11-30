@@ -15,11 +15,23 @@ export default function Work() {
                     <Project 
                         name='Leetcode'
                         link='https://github.com/sduemmen/leetcode'
-                        />
+                        description='A collection of solutions to algorithmic problems'
+                    />
                     <Project 
                         name='Cryptography'
                         link='https://github.com/sduemmen/cryptography'
-                        />
+                        description='A collection of cryptographic algorithms'
+                    />
+                    <Project 
+                        name='sduemmen.com Source Code'
+                        link='https://github.com/sduemmen/website'
+                        description='The source code to this website'
+                    />
+                    <Project 
+                        name='Discord Music Bot'
+                        link='https://github.com/sduemmen/musicbot'
+                        description='Discord Application implemented in Javascript'
+                    />
                 </div>
             </div>
         </section>

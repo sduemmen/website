@@ -6,6 +6,7 @@ const Project = (props) => {
             <h3 className="project__name">
                 {props.name}
             </h3>
+            {props.description ? <p className="project__description">{props.description}</p> : <></>}
             <a href={props.link} className="project__link" target="_blank" rel="noreferrer">View</a>
         </div>
     )
