@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Impressum from './js/pages/Impressum';
 import Cookies from './js/pages/Cookies';
 import Sections from './js/components/Sections';
-import CubicBezier from './js/pages/CubicBezier';
+import TypeRace from './js/pages/TypeRace';
 
 const App = () => {
     window.onbeforeunload = () => {
@@ -14,8 +14,8 @@ const App = () => {
         <div className='page__outer'>
             <Router>
                 <Switch>
-                    <Route path='/cubic-bezier'>
-                        <CubicBezier />
+                    <Route path='/typeracer'>
+                        <TypeRace />
                     </Route>
                     <Route path='/impressum'>
                         <Impressum />

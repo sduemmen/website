@@ -16,21 +16,31 @@ export default function Work() {
                         name='Leetcode'
                         link='https://github.com/sduemmen/leetcode'
                         description='A collection of solutions to algorithmic problems'
-                    />
+                        origin='github'
+                        />
                     <Project 
                         name='Cryptography'
                         link='https://github.com/sduemmen/cryptography'
                         description='A collection of cryptographic algorithms'
-                    />
+                        origin='github'
+                        />
                     <Project 
-                        name='sduemmen.com Source Code'
+                        name='sduemmen.com'
                         link='https://github.com/sduemmen/website'
                         description='The source code to this website'
-                    />
+                        origin='github'
+                        />
                     <Project 
                         name='Discord Music Bot'
                         link='https://github.com/sduemmen/musicbot'
                         description='Discord Application implemented in Javascript'
+                        origin='github'
+                        />
+                    <Project 
+                        name='Typeracer'
+                        link='https://sduemmen.com/typeracer'
+                        description='A typeracer like minigame'
+                        origin='sduemmen'
                     />
                 </div>
             </div>

@@ -1,0 +1,40 @@
+.typerace {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    padding: 50px;
+    text-align: center;
+    &__text {
+        max-width: 70%;
+    }
+    &__char {
+        font-size: 4rem;
+    }
+    &__input {
+        width: 70%;
+        margin: 50px;
+        padding: 10px;
+        color: $--clr-accent-white;
+        font-size: 4rem;
+        outline: none;
+        background-color: $--clr-darkblue-projectcard;
+        border: 5px solid $--clr-darkblue-content;
+        border-radius: 10px;
+        transition: border-color 200ms ease-in;
+        &:focus {
+            border-color: $--clr-accent-yellow;
+        }
+    }
+    &__reset_button {
+        cursor: pointer;
+        width: 100px;
+        height: 50px;
+        color: $--clr-accent-white;
+        font-size: 1.2rem;
+        background-color: $--clr-darkblue-content;
+        border: 2px solid $--clr-accent-yellow;
+        border-radius: 10px;
+        transition: color 350ms;
+    }
+}
