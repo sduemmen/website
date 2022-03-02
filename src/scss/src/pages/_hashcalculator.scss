@@ -1,0 +1,92 @@
+@import '../utilities/colors';
+@import '../utilities/fonts';
+
+.hash {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    padding: 50px;
+    @media screen and (max-width: 1000px) {
+        padding: 50px 30px;
+    }
+    @media screen and (max-width: 600px) {
+        padding: 50px 10px;
+    }
+    &__output {
+        width: 50%;
+        max-width: 100%;
+        padding: 10px;
+        color: $--clr-black-full;
+        background-color: $--clr-accent-white;
+        border: 4px solid $--clr-darkblue-content;
+        border-radius: 10px;
+        overflow-wrap: break-word;
+        &.empty {
+            color: $--clr-tags-comment;
+        }
+    }
+    &__input {
+        width: 70%;
+        margin: 50px;
+        padding: 10px;
+        color: $--clr-accent-white;
+        font-size: 2rem;
+        outline: none;
+        background-color: $--clr-darkblue-projectcard;
+        border: 5px solid $--clr-darkblue-content;
+        border-radius: 10px;
+        transition: border-color 200ms ease-in;
+        &:focus {
+            border-color: $--clr-accent-yellow;
+        }
+        @media screen and (max-width: 1900px) {
+            font-size: 1.8rem;
+        }
+        @media screen and (max-width: 1400px) {
+            font-size: 1.6rem;
+        }
+        @media screen and (max-width: 1000px) {
+            font-size: 1.5rem;
+        }
+        @media screen and (max-width: 600px) {
+            margin: 20px;
+            width: 90%;
+            font-size: 1.4rem;
+            border-width: 2px;
+        }
+    }
+    
+    &__button_container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        width: 500px;
+        padding: 10px;
+    }
+
+    &__backtohome {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 160px;
+        height: 50px;
+        margin: 5px;
+        padding: 0;
+        color: $--clr-accent-white;
+        font-family: $--ff-Exo2;
+        font-size: 1.4rem;
+        text-decoration: none;
+        background-color: $--clr-darkblue-content;
+        border: 2px solid $--clr-accent-yellow;
+        border-radius: 10px;
+        box-sizing: border-box;
+        @media screen and (max-width: 600px) {
+            width: 160px;
+            height: 40px;
+            font-size: 1.1rem;
+            border-width: 1px;
+        }
+    }
+}

@@ -76,9 +76,6 @@ const Navbar = () => {
                         )
                     }
                 })}
-                {/* <Link to='/cubic-bezier' className="navbar__item" onClick={gotoSection}>
-                    Cubic
-                </Link> */}
             </nav>
         </div>
         </>

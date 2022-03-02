@@ -13,8 +13,8 @@ const Project = (props) => {
             }
 
             {props.origin === 'github' ? 
-                <a href={props.link} className="project__link" target="_blank" rel="noreferrer"></a>
-            : <Link to="/typeracer" className='project__link' target="_blank" rel="noreferrer"/>
+                <a href={props.link} className="project__link" target="_blank" rel="noreferrer"> </a>
+            : <Link to={"/"+props.link} className='project__link' name=' '></Link>
             }
         </div>
     )

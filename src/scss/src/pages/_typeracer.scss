@@ -1,3 +1,6 @@
+@import '../utilities/colors';
+@import '../utilities/fonts';
+
 .typerace {
     display: flex;
     flex-direction: column;
@@ -5,11 +8,35 @@
     height: 100vh;
     padding: 50px;
     text-align: center;
+    @media screen and (max-width: 1000px) {
+        padding: 50px 30px;
+    }
+    @media screen and (max-width: 600px) {
+        padding: 50px 10px;
+    }
     &__text {
         max-width: 70%;
+        @media screen and (max-width: 1000px) {
+            max-width: 80%;
+        }
+        @media screen and (max-width: 600px) {
+            max-width: 90%;
+        }
     }
     &__char {
         font-size: 4rem;
+        @media screen and (max-width: 1900px) {
+            font-size: 3rem;
+        }
+        @media screen and (max-width: 1400px) {
+            font-size: 2.5rem;
+        }
+        @media screen and (max-width: 1000px) {
+            font-size: 2rem;
+        }
+        @media screen and (max-width: 600px) {
+            font-size: 1.3rem;
+        }
     }
     &__input {
         width: 70%;
@@ -25,16 +52,108 @@
         &:focus {
             border-color: $--clr-accent-yellow;
         }
+        @media screen and (max-width: 1900px) {
+            font-size: 3rem;
+        }
+        @media screen and (max-width: 1400px) {
+            font-size: 2.5rem;
+        }
+        @media screen and (max-width: 1000px) {
+            font-size: 2rem;
+        }
+        @media screen and (max-width: 600px) {
+            margin: 20px;
+            width: 90%;
+            font-size: 1.5rem;
+            border-width: 2px;
+        }
     }
-    &__reset_button {
-        cursor: pointer;
-        width: 100px;
-        height: 50px;
+    
+    &__button_container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        width: 500px;
+        padding: 10px;
+        @media screen and (max-width: 750px){
+            flex-direction: column;
+        }
+    }
+
+    &__button, &__backtohome {
+        margin: 5px;
+        padding: 0;
         color: $--clr-accent-white;
-        font-size: 1.2rem;
+        font-family: $--ff-Exo2;
+        font-size: 1.4rem;
         background-color: $--clr-darkblue-content;
         border: 2px solid $--clr-accent-yellow;
         border-radius: 10px;
-        transition: color 350ms;
+        box-sizing: border-box;
+        height: 50px;
+        @media screen and (max-width: 600px) {
+            height: 40px;
+            font-size: 1.1rem;
+            border-width: 1px;
+        }
+    }
+
+    &__button {
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        @media screen and (max-width: 600px) {
+            width: 180px;
+            height: 40px;
+            font-size: 1.1rem;
+            border-width: 1px;
+        }
+    }
+    &__backtohome {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 160px;
+        text-decoration: none;
+        @media screen and (max-width: 600px) {
+            width: 180px;
+        }
+    }
+
+    &__slider_container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 300px;
+        padding: 10px;
+    }
+
+    &__slider {
+        -webkit-appearance: none;
+        width: 80%;
+        height: 8px;
+        background: $--clr-accent-white;
+        outline: none;
+        border-radius: 10px;
+        &::-webkit-slider-thumb, &::-moz-range-thumb {
+            cursor: pointer;
+            width: 15px;
+            height: 15px;
+            -webkit-appearance: none;
+            appearance: none;
+            border-radius: 10px;
+            background: $--clr-accent-yellow;
+        }
+        &_value {
+            width: 10ch;
+            padding-left: 10px;
+            color: $--clr-accent-white;
+            font-family: $--ff-Exo2;
+            font-size: 1.4rem;
+        }
     }
 }

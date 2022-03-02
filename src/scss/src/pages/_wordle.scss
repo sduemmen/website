@@ -1,0 +1,223 @@
+@import '../utilities/colors';
+@import '../utilities/fonts';
+
+.wordle {
+    &__container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    &__topbar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 80px;
+    }
+
+    &__message {
+        font-size: 30px;
+        font-weight: 600;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: $--clr-accent-white;
+        @media screen and (max-width: 750px) {
+            font-size: 16px;
+            font-weight: 400;
+        }
+    }
+
+    &__hint {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: $--clr-darkblue-background;
+        z-index: 1;
+        &__container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: absolute;
+            padding: 50px;
+        }
+        &__heading {
+            margin: 20px;
+            margin-bottom: 0px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        &__text {
+            display: flex;
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 0px;
+        }
+        &__closebutton {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            margin: 5px;
+            width: 50px;
+            height: 50px;
+            padding: 0;
+            color: $--clr-accent-white;
+            font-family: $--ff-Exo2;
+            font-size: 1.4rem;
+            background-color: $--clr-darkblue-content;
+            border: 2px solid $--clr-accent-yellow;
+            border-radius: 10px;
+            box-sizing: border-box;
+            text-decoration: none;
+            z-index: 10;
+            @media screen and (max-width: 600px) {
+                height: 40px;
+                width: 40px;
+                font-size: 1.1rem;
+                border-width: 1px;
+            }
+        }
+    }
+
+    &__board {
+        margin: 50px;
+        margin-top: 0;
+        @media screen and (max-width: 750px) {
+            margin: 30px;
+            margin-top: 0;
+        }
+        &__row {
+            display: flex;
+        }
+    
+        &__tile {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 55px;
+            height: 55px;
+            margin: 8px;
+            font-size: 30px;
+            font-weight: 600;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-transform: uppercase;
+            border: 3px solid darken($color: $--clr-darkblue-content, $amount: 4);
+            border-radius: 2px;
+            background-color: $--clr-accent-white;
+            @media screen and (max-width: 750px) {
+                width: 45px;
+                height: 45px;
+                margin: 8px;
+                font-size: 24px;
+            }
+            &.correct {
+                background-color: $--clr-accent-green;
+            }
+            &.present {
+                background-color: $--clr-accent-yellow;
+            }
+            &.absent {
+                background-color: lighten($color: $--clr-darkblue-projectcard, $amount: 10);
+            }
+        }
+    }
+
+    &__keyboard {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 20px;
+        @media screen and (max-width: 750px) {
+            margin: 6px;
+        }
+        &__row {
+
+        }
+        &__key {
+            min-width: 35px;
+            padding: 8px;
+            margin: 2px;
+            background-color: $--clr-accent-white;
+            font-size: 20px;
+            color: black;
+            border: 2px solid $--clr-darkblue-content;
+            border-radius: 4px;
+            @media screen and (max-width: 750px) {
+                min-width: 25px;
+                padding: 8px;
+                margin: 2px;
+                font-size: 16px;
+            }
+            &.correct {
+                background-color: $--clr-accent-green;
+            }
+            &.present {
+                background-color: $--clr-accent-yellow;
+            }
+            &.absent {
+                background-color: lighten($color: $--clr-darkblue-projectcard, $amount: 10);
+            }
+        }
+    }
+
+    &__buttonwrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+    }
+
+    &__backtohome {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 5px;
+        width: 160px;
+        height: 50px;
+        padding: 0;
+        color: $--clr-accent-white;
+        font-family: $--ff-Exo2;
+        font-size: 1.4rem;
+        background-color: $--clr-darkblue-content;
+        border: 2px solid $--clr-accent-yellow;
+        border-radius: 10px;
+        box-sizing: border-box;
+        text-decoration: none;
+        @media screen and (max-width: 600px) {
+            height: 40px;
+            font-size: 1.1rem;
+            border-width: 1px;
+        }
+    }
+
+    &__refresh {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 5px;
+        width: 50px;
+        height: 50px;
+        padding: 0;
+        color: $--clr-accent-white;
+        font-family: $--ff-Exo2;
+        font-size: 1.4rem;
+        background-color: $--clr-darkblue-content;
+        border: 2px solid $--clr-accent-yellow;
+        border-radius: 10px;
+        box-sizing: border-box;
+        text-decoration: none;
+        @media screen and (max-width: 600px) {
+            height: 40px;
+            width: 40px;
+            font-size: 1.1rem;
+            border-width: 1px;
+        }
+    }
+}

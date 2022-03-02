@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
 
-import Home from '../pages/Home'
-import About from '../pages/About'
-import Projects from '../pages/Projects'
+import Home from '../pages/home/Home'
+import About from '../pages/home/About'
+import Projects from '../pages/home/Projects'
 import Navbar from './Navbar'
 import Footer from './Footer'
 
