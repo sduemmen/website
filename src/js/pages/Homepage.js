@@ -1,12 +1,9 @@
 import { useEffect } from 'react'
 
-import Home from '../pages/home/Home'
-import About from '../pages/home/About'
-import Projects from '../pages/home/Projects'
-import Navbar from './Navbar'
-import Footer from './Footer'
+import { Home, About, Projects} from './sections'
+import { Navbar, Footer } from '../components';
 
-const Sections = () => {
+const Homepage = () => {
     useEffect(() => {
         // save and restore last known view Position
         let elem = document.querySelector(localStorage.getItem('currentView') || ".section__home")
@@ -56,4 +53,4 @@ const Sections = () => {
     )
 }
 
-export default Sections
+export default Homepage

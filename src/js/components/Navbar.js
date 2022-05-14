@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import * as FaIcons from 'react-icons/fa'
-import * as IoIcons from 'react-icons/io5'
+import { FaBars } from 'react-icons/fa'
+import { IoClose } from 'react-icons/io5'
 import { Link as ScrollLink } from 'react-scroll'
 import { Link } from 'react-router-dom'
 
@@ -39,12 +39,12 @@ const Navbar = () => {
     return (
         <>
         <Link to='#' className='navbar__openButton' onClick={openNavMobile}>
-            <FaIcons.FaBars onClick={() => setVisible(!visible)}/>
+            <FaBars onClick={() => setVisible(!visible)}/>
         </Link>
         <div className='navbar__container'>
             <nav className='navbar'>
                 <Link to='#' className="navbar__closeButton" onClick={openNavMobile}>
-                    <IoIcons.IoClose />
+                    <IoClose />
                 </Link>
                 {NavbarData.map((item, idx) => {
                     if (window.location.pathname === '/') {

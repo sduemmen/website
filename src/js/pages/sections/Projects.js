@@ -1,6 +1,5 @@
 import React from 'react';
-import Project from '../../components/Project';
-import CharAnimNoHover from '../../components/CharAnimNoHover';
+import { Project, CharAnimNoHover } from '../../components';
 
 export default function Work() {
     return (
@@ -30,12 +29,12 @@ export default function Work() {
                         description='the source code to this website'
                         origin='github'
                         />
-                    <Project 
+                    {/* <Project 
                         name='Discord Music Bot'
                         link='https://github.com/sduemmen/musicbot'
                         description='a Discord Application implemented in Javascript'
                         origin='github'
-                        />
+                        /> */}
                     <Project 
                         name='Typeracer'
                         link='typeracer'
@@ -52,6 +51,18 @@ export default function Work() {
                         name='Wordle'
                         link='wordle'
                         description='a wordle clone'
+                        origin='sduemmen'
+                    />
+                    {/* <Project 
+                        name='Charts'
+                        link='charts'
+                        description='a charting app for stocks and cryptocurrencies'
+                        origin='sduemmen'
+                    /> */}
+                    <Project 
+                        name='CS:GO Dashboard'
+                        link='csgo'
+                        description='live stats related to CS:GO events'
                         origin='sduemmen'
                     />
                 </div>

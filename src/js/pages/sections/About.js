@@ -1,5 +1,5 @@
 import React from 'react';
-import CharAnimNoHover from '../../components/CharAnimNoHover';
+import { CharAnimNoHover } from '../../components';
 
 export default function About() {
     return (
@@ -17,8 +17,7 @@ export default function About() {
                     </p>
                     <p className='after'>
                         For the past 2 years I've been studying Computer Science at
-                        Johannes-Gutenberg University in Mainz, which still is my 
-                        current occupation.
+                        Johannes-Gutenberg University in Mainz.
                     </p>
                 </div>
             </div>

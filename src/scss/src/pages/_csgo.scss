@@ -1,0 +1,221 @@
+@import '../utilities/colors';
+@import '../utilities/fonts';
+
+.loader {
+    margin: 45vh auto 0 auto;
+    width: 40px;
+    height: 40px;
+    background-color: $--clr-accent-white;
+    animation: loading-anim 2.5s infinite;
+}
+
+@keyframes loading-anim {
+    0% {
+        rotate: 0deg;
+    }
+    25% {
+        rotate: 180deg;
+    }
+    50% {
+        rotate: 180deg;
+    }
+    75% {
+        rotate: 360deg;
+    }
+    100% {
+        rotate: 360deg;
+    }
+}
+
+.csgo {
+    &__container {
+        display: flex;
+        flex-direction: row;
+    }
+
+    &__matches {
+        display: flex;
+        flex-direction: column;
+        max-height: 95vh;
+        width: auto;
+        float: left;
+        table-layout: fixed;
+        white-space: nowrap;
+        overflow-y: scroll;
+        &__container{
+        }
+    }
+
+    &__matchcard {
+        background-color: $--clr-darkblue-content;
+        border-radius: 3px;
+        transition: background-color 100ms ease-in;
+        &:hover &__tournament {
+            background-color: $--clr-darkblue-projectcard;
+        }
+        &>td>span {
+            padding: 5px;
+        }
+        & .score {
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            color: $--clr-accent-white;
+            font-size: 14px;
+            font-family: $--ff-OpenSans;
+            font-weight: bold;
+            &:hover .csgo__matchcard__matchinfo {
+                display: flex;
+            }
+            & .not_started {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 10px;
+                color: gray;
+                font-size: 12px;
+            }
+            & .live {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 10px;
+                color: rgb(170, 14, 14);
+                font-size: 12px;
+            }
+        }
+        &__team1, &__team2 {
+            width: 220px;
+            &.winner {
+                background-color: lighten($color: $--clr-darkblue-content, $amount: 2);
+            }
+        }
+        &__team1>.team-holder {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-end;
+        }
+        & .team-holder {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        & .logo-holder {
+            display: inline-block;
+            width: 60px;
+            height: 25px;
+            text-align: center;
+            vertical-align: 1px;
+            & .logo {
+                max-width: 50px;
+                max-height: 25px;
+                width: auto;
+                height: auto;
+            }
+        }
+        & .name-holder {
+            display: flex;
+            align-items: center;
+            & .name {
+                font-family: $--ff-OpenSans;
+                font-size: 14px;
+                color: $--clr-accent-white;
+                &.winner {
+                    font-weight: bold;
+                }
+            }
+        }
+        &__tournament {
+            cursor: pointer;
+            &.active {
+                background-color: $--clr-darkblue-projectcard;
+            }
+        }
+        &__matchinfo {
+            cursor: pointer;
+            position: absolute;
+            display: none;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            height: 1.1rem;
+            padding: 4px;
+            background-color: $--clr-accent-white;
+            border-radius: 4px;
+            z-index: 10;
+            &__num-of-matches {
+                margin: 5px;
+                font-size: 0.9rem;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                color: black;
+            }
+            &__begin-time {
+                margin: 5px;
+                font-size: 0.8rem;
+                color: black;
+            }
+        }
+    }
+
+    &__match-overview {
+        flex-grow: 1;
+        margin-top: 20px;
+        & .twitch-player {
+            display: block;
+            width: 800px;
+            height: 450px;
+            margin: 0 auto;
+            border: none;
+        }
+    }
+}
+
+.csgo__matches__settings {
+}
+
+.tier-checkbox {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.tier-label {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    margin-left: 1em;
+    margin-top: 0.25em;
+    font-size: 16px;
+    font-family: $--ff-OpenSans;
+    color: $--clr-accent-white;
+}
+
+.tier-label::before {
+    position: relative;
+    left: -0.1em;
+    content: "";
+    width: 2em;
+    height: 1em;
+    background-color: rgb(207, 207, 207);
+    border-radius: 1em;
+}
+.tier-label::after {
+    position: absolute;
+    content: "";
+    width: 0.9em;
+    height: 0.9em;
+    background-color: rgb(255, 100, 100);
+    border-radius: 1em;
+}
+
+.tier-checkbox:checked + .tier-label::after {
+    background-color: rgb(70, 165, 46);
+    transform: translateX(0.85em);
+}

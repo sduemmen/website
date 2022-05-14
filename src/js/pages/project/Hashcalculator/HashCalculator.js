@@ -23,16 +23,14 @@ export default function HashCalculator() {
     }
 
     return (
-        <>
-            <div className="hash">
-                <input type="text" className="hash__input" value={currentInputValue} onChange={handleInputChange} placeholder='Message'/>
-                <p className={'hash__output' + (currentInputValue === '' ? ' empty' : '')}>
-                    {currentInputValue === '' ? 'SHA256 Hash' : currentHashValue}
-                </p>
-                <div className="hash__button_container">
-                    <Link to={'/'} className='hash__backtohome'>Back to Home</Link>
-                </div>
+        <div className="hash">
+            <input type="text" className="hash__input" value={currentInputValue} onChange={handleInputChange} placeholder='Message'/>
+            <p className={'hash__output' + (currentInputValue === '' ? ' empty' : '')}>
+                {currentInputValue === '' ? 'SHA256 Hash' : currentHashValue}
+            </p>
+            <div className="hash__button_container">
+                <Link to={'/'} className='hash__backtohome'>Back to Home</Link>
             </div>
-        </>
+        </div>
     )
 }

@@ -1,4 +1,4 @@
-import CharAnimHover from "./CharAnimHover"
+import { CharAnimHover } from "./index"
 
 const HeadingAnim = () => {
     return (

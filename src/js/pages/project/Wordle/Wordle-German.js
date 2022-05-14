@@ -18,58 +18,42 @@ export default function WordleGerman() {
     const debugWord = "umweg";
 
     useEffect(() => {
-        resetSolution(true)
+        resetSolution()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    const resetSolution = overwrite => {
-        if (overwrite || (!wordleData || !wordleData.solution)) {
-            var rndLetter = Math.floor(Math.random() * 26)
-            var rndWordIndex = Math.floor(Math.random() * germanWords[String.fromCharCode(rndLetter + 97)].length)
-            let newData = {...wordleData,
-                "solution": debugging ? debugWord : germanWords[String.fromCharCode(rndLetter + 97)][rndWordIndex],
-                "currentRowIndex": 0,
-                "currentGuesses": [],
-                "correctness": [],
-                "correctlyGuessedChars": [],
-                "presentGuessedChars": [],
-                "absentGuessedChars": [],
-                "status": "IN_PROGRESS"
-            }
-            setWordleData(newData);
-            localStorage.setItem("wordleDataGerman", JSON.stringify(newData));
+    const resetSolution = () => {
+        var rndLetter = Math.floor(Math.random() * 26)
+        var rndWordIndex = Math.floor(Math.random() * germanWords[String.fromCharCode(rndLetter + 97)].length)
+        let newData = {...wordleData,
+            "solution": debugging ? debugWord : germanWords[String.fromCharCode(rndLetter + 97)][rndWordIndex],
+            "currentRowIndex": 0,
+            "currentGuesses": [],
+            "correctness": [],
+            "correctlyGuessedChars": [],
+            "presentGuessedChars": [],
+            "absentGuessedChars": [],
+            "status": "IN_PROGRESS"
         }
+        setWordleData(newData);
     }
 
     const handleInputEvent = key => {
         if (wordleData.currentRowIndex > 5 || wordleData.status === "FINISHED") return;
-
         if (key === "ENTER") {
-            if (inputArray.length === 5) {
-                let word = inputArray.join("").toLowerCase();
-                if (!germanWords[word.charAt(0)].includes(word)) {
-                    errorTimeout();
-                    messageHandler("Nicht in der Wörterliste", 3000);
-                    return;
-                }
-                submitGuess(word);
-                setInputArray([]);
-                setEnteredText("")
-            } else {
-                messageHandler("Nicht genug Buchstaben", 3000);
-            }
+            let word = inputArray.join("").toLowerCase();
+            if (inputArray.length !== 5) return messageHandler("Not enough letters", 3000, true);
+            if (!germanWords[word.charAt(0)].includes(word)) return messageHandler("Not in word list", 3000, true);
+            submitGuess(word);
+            setEnteredText('');
+            setInputArray([]);
             return;
-        }
-
-        if (key === "⌫") {
+        } else if (key === "⌫") {
             inputArray.splice(inputArray.length-1, 1)
-            setInputArray([...inputArray]);
-        } 
-
-        else if (inputArray.length < 5) {
+        } else if (inputArray.length < 5) {
             inputArray.push(key)
-            setInputArray([...inputArray]);
         }
+        setInputArray([...inputArray]);
         setEnteredText(inputArray.join("").toLowerCase());
     }
 
@@ -77,8 +61,7 @@ export default function WordleGerman() {
         let currentGuesses = wordleData.currentGuesses;
         let currentRowIndex = wordleData.currentRowIndex;
         currentGuesses[currentRowIndex] = text;
-        let newData = {...wordleData, "currentGuesses": currentGuesses}
-        setWordleData(newData);
+        setWordleData({...wordleData, "currentGuesses": currentGuesses});
     }
 
     const submitGuess = guess => {
@@ -92,7 +75,6 @@ export default function WordleGerman() {
             if (wordleData.solution.charAt(i) === charAtIndex) {
                 matchingChars++;
                 rowCorrectness[i] = "correct";
-                console.log(charsLeft, charsLeft.indexOf(charAtIndex));
                 charsLeft.splice(charsLeft.indexOf(charAtIndex), 1);
                 if (!wordleData.correctlyGuessedChars.includes(charAtIndex)) {     // add char to correctly guessed chars
                     wordleData.correctlyGuessedChars.push(charAtIndex);
@@ -136,11 +118,11 @@ export default function WordleGerman() {
         wordleData.correctness.push(rowCorrectness);
         wordleData.currentGuesses[wordleData.currentRowIndex] = guess;
         wordleData.currentRowIndex += 1;
-        setWordleData(wordleData)
-        localStorage.setItem("wordleDataGerman", JSON.stringify(wordleData))
+        setWordleData(wordleData);
     }
 
-    const messageHandler = (message, time) => {
+    const messageHandler = (message, time, isError) => {
+        if (isError) errorTimeout();
         setMessage(message);
         setTimeout(() => {
             setMessage(null);

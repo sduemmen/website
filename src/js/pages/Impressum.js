@@ -1,7 +1,6 @@
-import { useEffect } from "react"
+import { useEffect } from "react";
 
-import Navbar from "../components/Navbar"
-import Footer from "../components/Footer"
+import { Navbar, Footer } from "../components";
 
 const Impressum = () => {
     useEffect(() => {
@@ -12,7 +11,7 @@ const Impressum = () => {
         <Navbar />
         <div className="page__inner">
             <div className='impressum'>
-                <h3>Impressum</h3>
+                {/* <h3>Impressum</h3>
                 <p>Angaben gemäß § 5 TMG</p>
                 <p>
                     Samuel Dümmen
@@ -29,15 +28,8 @@ const Impressum = () => {
                 <p>
                     <strong>Kontakt:</strong>
                     <br />
-                    Telefon: 0157-32458040
-                    <br />
                     E-Mail: <a href='mailto:sduemmen@gmx.de'>sduemmen@gmx.de</a>
-                </p>
-                <p>
-                    <strong>Aufsichtsbehörde:</strong>
-                    <br />
-                    Musteraufsicht Musterstadt
-                </p>
+                </p> */}
                 <p>
                     <strong>Haftungsausschluss: </strong>
                     <br /><br />

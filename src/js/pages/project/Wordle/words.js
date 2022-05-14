@@ -5267,7 +5267,6 @@ export const words= {
 		"tacet",
 		"treys",
 		"trows",
-		"tikis",
 		"tater",
 		"torsi",
 		"therm",
@@ -5802,9 +5801,7 @@ export const words= {
 		"zloty",
 		"zayin",
 		"zappy",
-		"zooey",
 		"zonks",
-		"zincs",
 		"zombi",
 		"zooks"
 ]}

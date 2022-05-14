@@ -144,7 +144,6 @@ section {
 
 body {
   font-size: 1.6rem;
-  line-height: 1.5;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -1266,6 +1265,7 @@ p.after::after {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  height: 100vh;
 }
 
 .wordle__topbar {
@@ -1383,21 +1383,23 @@ p.after::after {
 }
 
 .wordle__board {
-  margin: 50px;
-  margin-top: 0;
-}
-
-@media screen and (max-width: 750px) {
-  .wordle__board {
-    margin: 30px;
-    margin-top: 0;
-  }
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: (1fr)[6];
+      grid-template-rows: repeat(6, 1fr);
+  padding: 10px;
+  width: 350px;
+  height: 420px;
+  margin-bottom: 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .wordle__board__row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[5];
+      grid-template-columns: repeat(5, 1fr);
 }
 
 .wordle__board__tile {
@@ -1410,25 +1412,16 @@ p.after::after {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 55px;
-  height: 55px;
-  margin: 8px;
-  font-size: 30px;
-  font-weight: 600;
+  width: 62px;
+  height: 62px;
+  margin: 2px;
+  font-size: 36px;
+  font-weight: bold;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-transform: uppercase;
-  border: 3px solid #0f121a;
-  border-radius: 2px;
+  border: 0;
+  border-radius: 1px;
   background-color: #e0f5f3;
-}
-
-@media screen and (max-width: 750px) {
-  .wordle__board__tile {
-    width: 45px;
-    height: 45px;
-    margin: 8px;
-    font-size: 24px;
-  }
 }
 
 .wordle__board__tile.correct {
@@ -1457,33 +1450,23 @@ p.after::after {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin: 20px;
 }
 
-@media screen and (max-width: 750px) {
-  .wordle__keyboard {
-    margin: 6px;
-  }
+.wordle__keyboard__row {
+  margin: 0 auto 4px;
 }
 
 .wordle__keyboard__key {
-  min-width: 35px;
-  padding: 8px;
-  margin: 2px;
+  min-width: 30px;
+  height: 58px;
+  padding: 0;
+  margin: 0 4px 0 0;
   background-color: #e0f5f3;
-  font-size: 20px;
+  font-size: 26px;
   color: black;
-  border: 2px solid #161b27;
+  border: 0;
   border-radius: 4px;
-}
-
-@media screen and (max-width: 750px) {
-  .wordle__keyboard__key {
-    min-width: 25px;
-    padding: 8px;
-    margin: 2px;
-    font-size: 16px;
-  }
+  text-transform: uppercase;
 }
 
 .wordle__keyboard__key.correct {
@@ -1580,5 +1563,328 @@ p.after::after {
     font-size: 1.1rem;
     border-width: 1px;
   }
+}
+
+.loader {
+  margin: 45vh auto 0 auto;
+  width: 40px;
+  height: 40px;
+  background-color: #e0f5f3;
+  -webkit-animation: loading-anim 2.5s infinite;
+          animation: loading-anim 2.5s infinite;
+}
+
+@-webkit-keyframes loading-anim {
+  0% {
+    rotate: 0deg;
+  }
+  25% {
+    rotate: 180deg;
+  }
+  50% {
+    rotate: 180deg;
+  }
+  75% {
+    rotate: 360deg;
+  }
+  100% {
+    rotate: 360deg;
+  }
+}
+
+@keyframes loading-anim {
+  0% {
+    rotate: 0deg;
+  }
+  25% {
+    rotate: 180deg;
+  }
+  50% {
+    rotate: 180deg;
+  }
+  75% {
+    rotate: 360deg;
+  }
+  100% {
+    rotate: 360deg;
+  }
+}
+
+.csgo__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.csgo__matches {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  max-height: 95vh;
+  width: auto;
+  float: left;
+  table-layout: fixed;
+  white-space: nowrap;
+  overflow-y: scroll;
+}
+
+.csgo__matchcard {
+  background-color: #161b27;
+  border-radius: 3px;
+  -webkit-transition: background-color 100ms ease-in;
+  transition: background-color 100ms ease-in;
+}
+
+.csgo__matchcard:hover .csgo__matchcard__tournament {
+  background-color: #29344c;
+}
+
+.csgo__matchcard > td > span {
+  padding: 5px;
+}
+
+.csgo__matchcard .score {
+  cursor: pointer;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #e0f5f3;
+  font-size: 14px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+}
+
+.csgo__matchcard .score:hover .csgo__matchcard__matchinfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.csgo__matchcard .score .not_started {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px;
+  color: gray;
+  font-size: 12px;
+}
+
+.csgo__matchcard .score .live {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px;
+  color: #aa0e0e;
+  font-size: 12px;
+}
+
+.csgo__matchcard__team1, .csgo__matchcard__team2 {
+  width: 220px;
+}
+
+.csgo__matchcard__team1.winner, .csgo__matchcard__team2.winner {
+  background-color: #1a202d;
+}
+
+.csgo__matchcard__team1 > .team-holder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.csgo__matchcard .team-holder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.csgo__matchcard .logo-holder {
+  display: inline-block;
+  width: 60px;
+  height: 25px;
+  text-align: center;
+  vertical-align: 1px;
+}
+
+.csgo__matchcard .logo-holder .logo {
+  max-width: 50px;
+  max-height: 25px;
+  width: auto;
+  height: auto;
+}
+
+.csgo__matchcard .name-holder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.csgo__matchcard .name-holder .name {
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  color: #e0f5f3;
+}
+
+.csgo__matchcard .name-holder .name.winner {
+  font-weight: bold;
+}
+
+.csgo__matchcard__tournament {
+  cursor: pointer;
+}
+
+.csgo__matchcard__tournament.active {
+  background-color: #29344c;
+}
+
+.csgo__matchcard__matchinfo {
+  cursor: pointer;
+  position: absolute;
+  display: none;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 1.1rem;
+  padding: 4px;
+  background-color: #e0f5f3;
+  border-radius: 4px;
+  z-index: 10;
+}
+
+.csgo__matchcard__matchinfo__num-of-matches {
+  margin: 5px;
+  font-size: 0.9rem;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: black;
+}
+
+.csgo__matchcard__matchinfo__begin-time {
+  margin: 5px;
+  font-size: 0.8rem;
+  color: black;
+}
+
+.csgo__match-overview {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  margin-top: 20px;
+}
+
+.csgo__match-overview .twitch-player {
+  display: block;
+  width: 800px;
+  height: 450px;
+  margin: 0 auto;
+  border: none;
+}
+
+.tier-checkbox {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.tier-label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-left: 1em;
+  margin-top: 0.25em;
+  font-size: 16px;
+  font-family: "Open Sans", sans-serif;
+  color: #e0f5f3;
+}
+
+.tier-label::before {
+  position: relative;
+  left: -0.1em;
+  content: "";
+  width: 2em;
+  height: 1em;
+  background-color: #cfcfcf;
+  border-radius: 1em;
+}
+
+.tier-label::after {
+  position: absolute;
+  content: "";
+  width: 0.9em;
+  height: 0.9em;
+  background-color: #ff6464;
+  border-radius: 1em;
+}
+
+.tier-checkbox:checked + .tier-label::after {
+  background-color: #46a52e;
+  -webkit-transform: translateX(0.85em);
+          transform: translateX(0.85em);
 }
 /*# sourceMappingURL=main.css.map */

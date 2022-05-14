@@ -67,26 +67,24 @@ export default function TypeRace() {
     }
 
     return (
-        <>
-            <div className="typerace">
-                <p className="typerace__text">
-                    {currentWords.split('').map((char, idx) => { return (
-                        <span key={idx} className={"typerace__char " + idx} >
-                            {char}
-                        </span>)
-                    })}
-                </p>
-                <input type="text" className="typerace__input" value={currentInputValue} onChange={handleInputChange} />
-                <div className="typerace__button_container">
-                    <Link to={'/'} className='typerace__backtohome'>Back to Home</Link>
-                    <button className='typerace__button' onClick={reset}>Restart</button>
-                    <button className='typerace__button' onClick={updateWords}>Set word count</button>
-                </div>
-                <div className="typerace__slider_container">
-                    <input className="typerace__slider" type="range" min="1" max="25" value={currentWordCount} onChange={handleSliderChange} />
-                    <p className="typerace__slider_value">{currentWordCount + ' words'}</p>
-                </div>
+        <div className="typerace">
+            <p className="typerace__text">
+                {currentWords.split('').map((char, idx) => { return (
+                    <span key={idx} className={"typerace__char " + idx} >
+                        {char}
+                    </span>)
+                })}
+            </p>
+            <input type="text" className="typerace__input" value={currentInputValue} onChange={handleInputChange} />
+            <div className="typerace__button_container">
+                <Link to={'/'} className='typerace__backtohome'>Back to Home</Link>
+                <button className='typerace__button' onClick={reset}>Restart</button>
+                <button className='typerace__button' onClick={updateWords}>Set word count</button>
             </div>
-        </>
+            <div className="typerace__slider_container">
+                <input className="typerace__slider" type="range" min="1" max="25" value={currentWordCount} onChange={handleSliderChange} />
+                <p className="typerace__slider_value">{currentWordCount + ' words'}</p>
+            </div>
+        </div>
     )
 }

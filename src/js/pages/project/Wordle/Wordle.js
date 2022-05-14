@@ -8,7 +8,7 @@ import { IoClose } from 'react-icons/io5'
 import Keyboard from './Keyboard';
 
 export default function Wordle() {
-    const [wordleData, setWordleData] = useState(JSON.parse(localStorage.getItem("wordleData")));
+    const [wordleData, setWordleData] = useState(null);
     const [inputArray, setInputArray] = useState([]);
     const [message, setMessage] = useState(null);
     const [error, setError] = useState(false);
@@ -18,58 +18,42 @@ export default function Wordle() {
     const debugWord = "umweg";
 
     useEffect(() => {
-        resetSolution(true)
+        resetSolution()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    const resetSolution = overwrite => {
-        if (overwrite || (!wordleData || !wordleData.solution)) {
-            var rndLetter = Math.floor(Math.random() * 26)
-            var rndWordIndex = Math.floor(Math.random() * words[String.fromCharCode(rndLetter + 97)].length)
-            let newData = {...wordleData,
-                "solution": debugging ? debugWord : words[String.fromCharCode(rndLetter + 97)][rndWordIndex],
-                "currentRowIndex": 0,
-                "currentGuesses": [],
-                "correctness": [],
-                "correctlyGuessedChars": [],
-                "presentGuessedChars": [],
-                "absentGuessedChars": [],
-                "status": "IN_PROGRESS"
-            }
-            setWordleData(newData);
-            localStorage.setItem("wordleData", JSON.stringify(newData));
+    const resetSolution = () => {
+        var rndLetter = Math.floor(Math.random() * 26)
+        var rndWordIndex = Math.floor(Math.random() * words[String.fromCharCode(rndLetter + 97)].length)
+        let newData = {...wordleData,
+            "solution": debugging ? debugWord : words[String.fromCharCode(rndLetter + 97)][rndWordIndex],
+            "currentRowIndex": 0,
+            "currentGuesses": [],
+            "correctness": [],
+            "correctlyGuessedChars": [],
+            "presentGuessedChars": [],
+            "absentGuessedChars": [],
+            "status": "IN_PROGRESS"
         }
+        setWordleData(newData);
     }
 
     const handleInputEvent = key => {
         if (wordleData.currentRowIndex > 5 || wordleData.status === "FINISHED") return;
-
         if (key === "ENTER") {
-            if (inputArray.length === 5) {
-                let word = inputArray.join("").toLowerCase();
-                if (!words[word.charAt(0)].includes(word)) {
-                    errorTimeout();
-                    messageHandler("Not in word list", 3000);
-                    return;
-                }
-                submitGuess(word);
-                setInputArray([]);
-                setEnteredText("")
-            } else {
-                messageHandler("Not enough letters", 3000);
-            }
+            let word = inputArray.join("").toLowerCase();
+            if (inputArray.length !== 5) return messageHandler("Not enough letters", 3000, true);
+            if (!words[word.charAt(0)].includes(word)) return messageHandler("Not in word list", 3000, true);
+            submitGuess(word);
+            setEnteredText('');
+            setInputArray([]);
             return;
-        }
-
-        if (key === "⌫") {
+        } else if (key === "⌫") {
             inputArray.splice(inputArray.length-1, 1)
-            setInputArray([...inputArray]);
-        } 
-
-        else if (inputArray.length < 5) {
+        } else if (inputArray.length < 5) {
             inputArray.push(key)
-            setInputArray([...inputArray]);
         }
+        setInputArray([...inputArray]);
         setEnteredText(inputArray.join("").toLowerCase());
     }
 
@@ -77,8 +61,7 @@ export default function Wordle() {
         let currentGuesses = wordleData.currentGuesses;
         let currentRowIndex = wordleData.currentRowIndex;
         currentGuesses[currentRowIndex] = text;
-        let newData = {...wordleData, "currentGuesses": currentGuesses}
-        setWordleData(newData);
+        setWordleData({...wordleData, "currentGuesses": currentGuesses});
     }
 
     const submitGuess = guess => {
@@ -92,7 +75,6 @@ export default function Wordle() {
             if (wordleData.solution.charAt(i) === charAtIndex) {
                 matchingChars++;
                 rowCorrectness[i] = "correct";
-                console.log(charsLeft, charsLeft.indexOf(charAtIndex));
                 charsLeft.splice(charsLeft.indexOf(charAtIndex), 1);
                 if (!wordleData.correctlyGuessedChars.includes(charAtIndex)) {     // add char to correctly guessed chars
                     wordleData.correctlyGuessedChars.push(charAtIndex);
@@ -136,11 +118,11 @@ export default function Wordle() {
         wordleData.correctness.push(rowCorrectness);
         wordleData.currentGuesses[wordleData.currentRowIndex] = guess;
         wordleData.currentRowIndex += 1;
-        setWordleData(wordleData)
-        localStorage.setItem("wordleData", JSON.stringify(wordleData))
+        setWordleData(wordleData);
     }
 
-    const messageHandler = (message, time) => {
+    const messageHandler = (message, time, isError) => {
+        if (isError) errorTimeout();
         setMessage(message);
         setTimeout(() => {
             setMessage(null);
@@ -210,7 +192,7 @@ export default function Wordle() {
             <Keyboard wordleData={wordleData} handleKeyPress={handleInputEvent} />
             <div className="wordle__buttonwrapper">
                 <Link to={'/'} className='wordle__backtohome'>Homepage</Link>
-                <button className="wordle__refresh" onClick={() => resetSolution(true)}>
+                <button className="wordle__refresh" onClick={() => resetSolution()}>
                     <VscDebugRestart/>
                 </button>
                 <button className="wordle__refresh" onClick={() => setShowHint(!showHint)}>

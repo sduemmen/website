@@ -1,5 +1,5 @@
 import React from 'react';
-import HeadingAnim from '../../components/HeadingAnim';
+import { HeadingAnim } from '../../components';
 
 export default function Home() {
     return (
