@@ -35,6 +35,6 @@ var options = {
   },
   headers: {
     'x-rapidapi-host': 'coinranking1.p.rapidapi.com',
-    'x-rapidapi-key': '8ca0347a9bmsha42bb61017cde63p1807e7jsn9d115d7e0a67'
+    'x-rapidapi-key': ''
   }
 };
