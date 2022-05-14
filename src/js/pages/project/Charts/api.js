@@ -34,7 +34,7 @@ var options = {
     offset: '0'
   },
   headers: {
-    'x-rapidapi-host': 'coinranking1.p.rapidapi.com',
+    'x-rapidapi-host': '',
     'x-rapidapi-key': ''
   }
 };
